@@ -1,14 +1,11 @@
 package vcmsa.projects.starsucks
 
 import android.os.Bundle
-import android.widget.ImageView
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import vcmsa.projects.starsucks.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
     /*
     private lateinit var  sb1: ImageView2
     private lateinit var  sb2: ImageView
@@ -23,17 +20,33 @@ class MainActivity : AppCompatActivity() {
 
     //Way to bind our images and do stuff with them when it is clicked
         val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
     //Making it do something when the image is clicked
-        binding.imageView2.setOnClickListener(){}
+        binding.imageView2.setOnClickListener() {
+            Toast.makeText(  this, "Soy Latte", Toast.LENGTH_LONG).show()
+        //Making text appear when coffee is clicked
+        }
+        binding.imageView3.setOnClickListener() {
+            Toast.makeText(  this,  "Chocco Frap", Toast.LENGTH_SHORT).show()
 
+        }
+        binding.imageView4.setOnClickListener() {
+            Toast.makeText(  this,  "Bottled americano", Toast.LENGTH_SHORT).show()
+
+        }
+        binding.imageView5.setOnClickListener() {
+            Toast.makeText(  this,  "Rainbow Frappo", Toast.LENGTH_SHORT).show()
+
+        }
+        binding.imageView6.setOnClickListener() {
+            Toast.makeText(  this,  "Caramel Frappo", Toast.LENGTH_SHORT).show()
+
+        }
+        binding.imageView7.setOnClickListener() {
+            Toast.makeText(  this,  "Black Forest Frappo", Toast.LENGTH_SHORT).show()
+
+        }
 
 
     }
