@@ -1,11 +1,15 @@
 package vcmsa.projects.starsucks
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import vcmsa.projects.starsucks.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(){
+
+class MainActivity : AppCompatActivity(), View.OnClickListener {
+    //Creating instance of order object
+    var order = Order()
     /*
     private lateinit var  sb1: ImageView2
     private lateinit var  sb2: ImageView
@@ -21,33 +25,31 @@ class MainActivity : AppCompatActivity(){
     //Way to bind our images and do stuff with them when it is clicked
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //
+        binding.imageView2.setOnClickListener(this)
+        binding.imageView3.setOnClickListener(this)
+        binding.imageView4.setOnClickListener(this)
+        binding.imageView5.setOnClickListener(this)
+        binding.imageView6.setOnClickListener(this)
+        binding.imageView7.setOnClickListener(this)
 
-    //Making it do something when the image is clicked
-        binding.imageView2.setOnClickListener() {
-            Toast.makeText(  this, "Soy Latte", Toast.LENGTH_LONG).show()
-        //Making text appear when coffee is clicked
-        }
-        binding.imageView3.setOnClickListener() {
-            Toast.makeText(  this,  "Chocco Frap", Toast.LENGTH_SHORT).show()
+    }
 
-        }
-        binding.imageView4.setOnClickListener() {
-            Toast.makeText(  this,  "Bottled americano", Toast.LENGTH_SHORT).show()
 
-        }
-        binding.imageView5.setOnClickListener() {
-            Toast.makeText(  this,  "Rainbow Frappo", Toast.LENGTH_SHORT).show()
+    override fun onClick(v: View?){
 
-        }
-        binding.imageView6.setOnClickListener() {
-            Toast.makeText(  this,  "Caramel Frappo", Toast.LENGTH_SHORT).show()
+        when (v?.id) {
+            //When imageview clicked, sets product name to soy latte
+            R.id.imageView2 -> order.productName = "Soy Latte"
+            R.id.imageView3 -> order.productName = "Chocco Frapp"
+            R.id.imageView4 -> order.productName = "Bottled Americano"
+            R.id.imageView5 -> order.productName = "Rainbow Frapp"
+            R.id.imageView6 -> order.productName = "Caramel Frapp"
+            R.id.imageView7 -> order.productName = "Black forest Frapp"
 
-        }
-        binding.imageView7.setOnClickListener() {
-            Toast.makeText(  this,  "Black Forest Frappo", Toast.LENGTH_SHORT).show()
 
         }
-
+        Toast.makeText(this, "MMM" + order.productName, Toast.LENGTH_SHORT).show()
 
     }
 }
