@@ -45,11 +45,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.imageView4 -> order.productName = "Bottled Americano"
             R.id.imageView5 -> order.productName = "Rainbow Frapp"
             R.id.imageView6 -> order.productName = "Caramel Frapp"
-            R.id.imageView7 -> order.productName = "Black forest Frapp"
+            R.id.imageView7 -> order.productName = "Black Forest Frapp"
 
 
         }
         Toast.makeText(this, "MMM" + order.productName, Toast.LENGTH_SHORT).show()
+        openIntent(applicationContext, order.productName, order_details::class.java)
+
+
 
     }
 }
