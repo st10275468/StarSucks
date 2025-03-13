@@ -7,9 +7,11 @@ import vcmsa.projects.starsucks.databinding.ActivityOrderDetailsBinding
 
 class order_details : AppCompatActivity() {
     var order = Order()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         setContentView(R.layout.activity_order_details)
         val binding = ActivityOrderDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
