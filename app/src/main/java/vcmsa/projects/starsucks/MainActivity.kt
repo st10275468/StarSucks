@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import vcmsa.projects.starsucks.databinding.ActivityMainBinding
+import vcmsa.projects.starsucks.databinding.ActivityMainWithNavBinding
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     //Creating instance of order object
     var order = Order()
+    private lateinit var binding: ActivityMainWithNavBinding
     /*
     private lateinit var  sb1: ImageView2
     private lateinit var  sb2: ImageView
@@ -22,9 +23,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        var toggleOnOff = ActionBarDrawerToggle(
+            activity: this,
+            binding.drawerLayout
+        )
+
     //Way to bind our images and do stuff with them when it is clicked
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        val binding = ActivityMainWithNavBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(nav_toolbar)
         //
         binding.imageView2.setOnClickListener(this)
         binding.imageView3.setOnClickListener(this)
