@@ -1,37 +1,45 @@
 package vcmsa.projects.starsucks
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import com.google.android.material.navigation.NavigationView
 import vcmsa.projects.starsucks.databinding.ActivityMainWithNavBinding
 
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener,
+    NavigationView.OnNavigationItemSelectedListener {
     //Creating instance of order object
     var order = Order()
     private lateinit var binding: ActivityMainWithNavBinding
-    /*
-    private lateinit var  sb1: ImageView2
-    private lateinit var  sb2: ImageView
-    private lateinit var  sb3: ImageView
-    private lateinit var  sb4: ImageView
-    private lateinit var  sb5: ImageView
-    private lateinit var  sb6: ImageView
-*/
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var toggleOnOff = ActionBarDrawerToggle(
-            activity: this,
-            binding.drawerLayout
-        )
-
-    //Way to bind our images and do stuff with them when it is clicked
+        setContentView(R.layout.activity_main)
         val binding = ActivityMainWithNavBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(nav_toolbar)
+
+
+    //Way to bind our images and do stuff with them when it is clicked
+
+        setSupportActionBar(binding.navToolbar1)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        var toggleOnOff = ActionBarDrawerToggle(this, binding.drawerLayout, binding.navToolbar1,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close)
+        binding.drawerLayout.addDrawerListener(toggleOnOff)
+        toggleOnOff.syncState()
+
+        binding.navView.bringToFront()
+        binding.navView.setNavigationItemSelectedListener(this)
         //
         binding.imageView2.setOnClickListener(this)
         binding.imageView3.setOnClickListener(this)
@@ -41,7 +49,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.imageView7.setOnClickListener(this)
 
     }
+    override fun onBackPressed(){
 
+        if(binding.drawerLayout.isDrawerOpen(GravityCompat.START)){
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+        }
+            else{
+                super.onBackPressed()
+        }
+    }
 
     override fun onClick(v: View?){
 
@@ -61,5 +77,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {when (item.itemId){
+       // R.id.nav_photo -> openIntent(applicationContext, "", CoffeeSnapsActivity::class.java)
+    }
+        binding.drawerLayout.closeDrawer(GravityCompat.START)
+
+        return true
     }
 }

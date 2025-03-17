@@ -13,7 +13,7 @@
         android:layout_height="21dp" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/logo"
         android:layout_width="211dp"
         android:layout_height="211dp"
         android:layout_gravity="center_horizontal"
