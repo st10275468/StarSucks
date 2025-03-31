@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {when (item.itemId){
-       // R.id.nav_photo -> openIntent(applicationContext, "", CoffeeSnapsActivity::class.java)
+       R.id.nav_photo -> openIntent(this, "", CoffeeSnapsActivity::class.java)
     }
         binding.drawerLayout.closeDrawer(GravityCompat.START)
 
